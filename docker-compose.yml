@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  api-fetcher:
+    build: .
+    links:
+      - sqlite-db
+    depends_on:
+      - sqlite-db
+
+  sqlite-db:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    ports:
+      - "8080:8080"
